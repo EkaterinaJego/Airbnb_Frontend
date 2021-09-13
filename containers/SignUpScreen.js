@@ -23,8 +23,8 @@ const SignUpScreen = ({ setToken, setId }) => {
   const [confirmpassword, setConfirmPassword] = useState("");
 
   const handleSignUp = async () => {
-    try {
-      if (email && username && description && password) {
+    if (email && username && description && password && confirmpassword) {
+      try {
         const response = await axios.post(
           "https://express-airbnb-api.herokuapp.com/user/sign_up",
           {
@@ -34,18 +34,22 @@ const SignUpScreen = ({ setToken, setId }) => {
             password: password,
           }
         );
-        console.log("RESPONSE DATA FROM SIGNUP SCREEN ==>", response.data);
+
         if (response.data.token && response.data.id) {
-          setToken(response.data.token);
-          setId(response.data.id);
+          const userToken = response.data.token;
+          const userId = response.data.id;
+          setToken(userToken);
+          setId(userId);
+        } else {
+          console.log("Some information is missing");
         }
-      } else {
-        alert("Some information is missing");
+      } catch (error) {
+        if (error.data.error === "This email already has an account") {
+          alert("There is already this email in the database");
+        }
       }
-    } catch (error) {
-      if (error.data.error === "This email already has an account") {
-        alert("There is already this email in the database");
-      }
+    } else {
+      console.log("Some parameters are missing");
     }
   };
 

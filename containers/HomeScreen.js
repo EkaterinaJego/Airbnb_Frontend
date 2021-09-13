@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/core";
+// import { useNavigation } from "@react-navigation/core";
 import {
   Text,
   View,
@@ -8,11 +8,12 @@ import {
   ActivityIndicator,
   Image,
   StyleSheet,
+  Button,
 } from "react-native";
 const axios = require("axios");
 import { MaterialIcons } from "@expo/vector-icons";
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen({ navigation, setToken }) {
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 

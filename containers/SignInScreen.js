@@ -21,25 +21,33 @@ const SignInScreen = ({ setToken, setId }) => {
 
   const handleSignIn = async () => {
     if (email && password) {
-      const response = await axios.post(
-        "https://express-airbnb-api.herokuapp.com/user/log_in",
-        {
-          email: email,
-          password: password,
+      try {
+        const response = await axios.post(
+          "https://express-airbnb-api.herokuapp.com/user/log_in",
+          {
+            email,
+            password,
+          }
+        );
+        if (response.data.token && response.data.id) {
+          const userToken = response.data.token;
+          const userId = response.data.id;
+          console.log(userToken);
+          setToken(userToken);
+          setId(userId);
+          setAllChamps(true);
+          navigation.navigate("Home", { username: response.data.username });
+        } else {
+          setAllChamps(false);
+          console.log("Erorr occured");
         }
-      );
-      setAllChamps(true);
-      console.log("Token = ", response.data.token);
-      const userToken = response.data.token;
-      // console.log(userToken);
-      setToken(userToken);
-      setId(userId);
-      navigation.navigate("Home", { username: response.data.username });
+      } catch (error) {
+        console.log(error.response);
+      }
     } else {
-      setAllChamps(false);
+      console.log("Please fullfill all fields");
     }
   };
-
   return (
     <KeyboardAwareScrollView style={styles.container}>
       <SafeAreaView>
