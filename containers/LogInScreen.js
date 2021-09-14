@@ -13,7 +13,7 @@ import {
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 const axios = require("axios");
 
-const SignInScreen = ({ setToken, setId }) => {
+const LogInScreen = ({ setToken, setId }) => {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,7 +58,7 @@ const SignInScreen = ({ setToken, setId }) => {
                 source={require("../assets/téléchargement.jpg")}
                 resizeMode="contain"
               ></Image>
-              <Text style={styles.nameofthepage}>SIGN IN</Text>
+              <Text style={styles.nameofthepage}>LOG IN</Text>
             </View>
             <View style={styles.textinput}>
               <TextInput

@@ -44,12 +44,11 @@ const SignUpScreen = ({ setToken, setId }) => {
           console.log("Some information is missing");
         }
       } catch (error) {
-        if (error.data.error === "This email already has an account") {
-          alert("There is already this email in the database");
-        }
+        console.log("ERROR =====>", error);
+        alert("There is already this email in the database");
       }
     } else {
-      console.log("Some parameters are missing");
+      console.log("ERROR===>", error.response);
     }
   };
 
@@ -128,7 +127,7 @@ const SignUpScreen = ({ setToken, setId }) => {
                 </View>
                 <TouchableOpacity
                   onPress={() => {
-                    navigation.navigate("SignIn");
+                    navigation.navigate("LogIn");
                   }}
                 >
                   <Text style={styles.registerbutton}>

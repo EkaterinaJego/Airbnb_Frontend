@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "./containers/HomeScreen";
 import RoomScreen from "./containers/RoomScreen";
-import SignInScreen from "./containers/SignInScreen";
+import LogInScreen from "./containers/LogInScreen";
 import SignUpScreen from "./containers/SignUpScreen";
 import AroundScreen from "./containers/AroundScreen";
 import ProfileScreen from "./containers/ProfileScreen";
@@ -63,8 +63,8 @@ export default function App() {
     <NavigationContainer>
       {isLoading ? null : userToken === null ? (
         <Stack.Navigator>
-          <Stack.Screen name="SignIn">
-            {() => <SignInScreen setToken={setToken} setId={setId} />}
+          <Stack.Screen name="LogIn">
+            {() => <LogInScreen setToken={setToken} setId={setId} />}
           </Stack.Screen>
           <Stack.Screen name="SignUp">
             {() => <SignUpScreen setToken={setToken} setId={setId} />}
