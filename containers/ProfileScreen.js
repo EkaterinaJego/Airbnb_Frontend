@@ -16,16 +16,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
 import * as ImagePicker from "expo-image-picker";
+import { DescriptionInput } from "../components/DescriptionInput";
 
-export default function ProfileScreen({
-  navigation,
-  userId,
-  userToken,
-  setToken,
-  setId,
-  setUserId,
-  setUserToken,
-}) {
+export default function ProfileScreen({ userId, userToken, setToken, setId }) {
   // console.log("userToken ===> ", userToken);
   // console.log("userId ===> ", userId);
 
@@ -150,22 +143,24 @@ export default function ProfileScreen({
     <KeyboardAwareScrollView>
       <ScrollView style={styles.main}>
         <View style={styles.iconphotogallery}>
-          {image ? (
-            <Image
-              source={{ uri: image }}
-              style={styles.userimage}
-              resizeMode="contain"
-            />
-          ) : (
-            <View style={styles.iconperson}>
-              <Ionicons
-                name="ios-person-circle-outline"
-                size={200}
-                color="grey"
-              />
-            </View>
-          )}
           <View>
+            {image ? (
+              <Image
+                source={{ uri: image }}
+                style={styles.userimage}
+                resizeMode="cover"
+              />
+            ) : (
+              <View style={styles.iconperson}>
+                <Ionicons
+                  name="ios-person-circle-outline"
+                  size={200}
+                  color="grey"
+                />
+              </View>
+            )}
+          </View>
+          <View style={styles.cameragallerybtns}>
             <TouchableOpacity onPress={handlePickImage}>
               <Ionicons
                 name="md-images-outline"
@@ -203,15 +198,10 @@ export default function ProfileScreen({
               setInfoModified(true);
             }}
           />
-          <TextInput
-            multiline
-            placeholder="Description"
-            style={styles.textinput2}
+          <DescriptionInput
             value={description}
-            onChangeText={(text) => {
-              setDescription(text);
-              setInfoModified(true);
-            }}
+            setDescription={setDescription}
+            setInfoModified={setInfoModified}
           />
         </View>
         <View style={styles.updatebtnview}>
@@ -245,12 +235,6 @@ export default function ProfileScreen({
             >
               Log Out
             </Text>
-            {/* <Button
-              title="LogOut"
-              onPress={() => {
-                setId(null), setToken(null);
-              }} */}
-            {/* /> */}
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -264,7 +248,7 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     height: "100%",
-    backgroundColor: "white",
+
     marginLeft: 10,
     marginRight: 10,
   },
@@ -276,7 +260,9 @@ const styles = StyleSheet.create({
   iconphotogallery: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    marginLeft: 10,
+    marginRight: 10,
   },
 
   twoicons: {
@@ -287,6 +273,8 @@ const styles = StyleSheet.create({
   userinfo: {
     alignItems: "center",
     justifyContent: "center",
+
+    marginTop: 20,
   },
 
   textinput: {
@@ -294,21 +282,6 @@ const styles = StyleSheet.create({
     borderColor: "pink",
     width: "100%",
     marginBottom: 20,
-  },
-
-  textinput2: {
-    borderBottomWidth: 2,
-    borderTopWidth: 2,
-    borderLeftWidth: 2,
-    borderRightWidth: 2,
-    borderColor: "pink",
-    width: "100%",
-    marginBottom: 10,
-    paddingTop: 25,
-    textAlign: "left",
-    textAlignVertical: "bottom",
-    paddingBottom: 15,
-    justifyContent: "center",
   },
 
   updatebtnview: {
@@ -333,11 +306,9 @@ const styles = StyleSheet.create({
   },
 
   userimage: {
-    width: 200,
-    height: 200,
-    borderRadius: 20,
-    marginRight: 20,
-    marginBottom: 40,
+    width: 250,
+    height: 250,
+    borderRadius: 10,
   },
 
   logoutbtn: {
@@ -357,21 +328,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
+  // modalView: {
+  //   margin: 20,
+  //   backgroundColor: "white",
+  //   borderRadius: 20,
+  //   padding: 35,
+  //   alignItems: "center",
+  //   shadowColor: "#000",
+  //   shadowOffset: {
+  //     width: 0,
+  //     height: 2,
+  //   },
+  //   shadowOpacity: 0.25,
+  //   shadowRadius: 4,
+  //   elevation: 5,
+  // },
   button: {
     borderRadius: 20,
     padding: 10,
@@ -389,5 +360,11 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+  },
+
+  cameragallerybtns: {
+    flex: 1,
+    justifyContent: "space-around",
+    alignItems: "flex-end",
   },
 });

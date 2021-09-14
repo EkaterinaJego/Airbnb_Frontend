@@ -67,7 +67,7 @@ export default function RoomScreen({ route }) {
       <View style={{ flex: 1 }}>
         <SwiperFlatList
           showPagination
-          paginationActiveColor={"red"}
+          paginationActiveColor={"pink"}
           data={images}
           index={0}
           style={styles.swiper}
@@ -207,6 +207,7 @@ const styles = StyleSheet.create({
   showbtn: {
     fontSize: 13,
     color: "grey",
-    marginTop: "5%",
+    marginTop: "3%",
+    marginBottom: "2%",
   },
 });

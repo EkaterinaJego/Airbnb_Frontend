@@ -11,13 +11,10 @@ import SignUpScreen from "./containers/SignUpScreen";
 import AroundScreen from "./containers/AroundScreen";
 import ProfileScreen from "./containers/ProfileScreen";
 import HeaderImage from "./components/HeaderImage";
-const axios = require("axios");
+// const axios = require("axios");
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-
-// Icons
-import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
