@@ -19,8 +19,8 @@ import * as ImagePicker from "expo-image-picker";
 import { DescriptionInput } from "../components/DescriptionInput";
 
 export default function ProfileScreen({ userId, userToken, setToken, setId }) {
-  // console.log("userToken ===> ", userToken);
-  // console.log("userId ===> ", userId);
+  console.log("userToken ===> ", userToken);
+  console.log("userId ===> ", userId);
 
   const { width } = Dimensions.get("window");
   const [email, setEmail] = useState("");
@@ -39,16 +39,18 @@ export default function ProfileScreen({ userId, userToken, setToken, setId }) {
     if (userToken && userId) {
       try {
         const response = await axios.get(
-          `https://express-airbnb-api.herokuapp.com/user/${userId}`,
+          `https://airbnb-backend-by-ejego.herokuapp.com/user/${userId}`,
+
           {
             headers: {
               authorization: `Bearer ${userToken}`,
             },
           }
         );
-        setEmail(response.data.email);
-        setUsername(response.data.username);
-        setDescription(response.data.description);
+        console.log("RESPONSE====>", response.data);
+        setEmail(response.data.account.email);
+        setUsername(response.data.account.username);
+        setDescription(response.data.account.description);
         if (response.data.photo) {
           setImage(response.data.photo[0].url);
         }
