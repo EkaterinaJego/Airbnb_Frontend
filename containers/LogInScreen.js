@@ -88,7 +88,7 @@ const LogInScreen = ({ setToken, setId }) => {
                 )}
                 <View style={styles.button}>
                   <TouchableOpacity onPress={handleSignIn}>
-                    <Text>Sign In</Text>
+                    <Text>Log In</Text>
                   </TouchableOpacity>
                 </View>
                 <TouchableOpacity

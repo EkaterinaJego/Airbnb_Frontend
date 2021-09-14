@@ -131,7 +131,7 @@ const SignUpScreen = ({ setToken, setId }) => {
                   }}
                 >
                   <Text style={styles.registerbutton}>
-                    Already have an account ? Sign in
+                    Already have an account ? Log in
                   </Text>
                 </TouchableOpacity>
               </View>
