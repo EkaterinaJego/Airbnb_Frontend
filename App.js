@@ -16,6 +16,8 @@ import HeaderImage from "./components/HeaderImage";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+//my backend : https://airbnb-backend-by-ejego.herokuapp.com/
+
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [userToken, setUserToken] = useState(null);

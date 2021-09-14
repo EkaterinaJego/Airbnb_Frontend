@@ -26,7 +26,7 @@ const SignUpScreen = ({ setToken, setId }) => {
     if (email && username && description && password && confirmpassword) {
       try {
         const response = await axios.post(
-          "https://express-airbnb-api.herokuapp.com/user/sign_up",
+          "https://airbnb-backend-by-ejego.herokuapp.com/user/signup",
           {
             email: email,
             username: username,
