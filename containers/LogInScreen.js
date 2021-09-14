@@ -19,11 +19,11 @@ const LogInScreen = ({ setToken, setId }) => {
   const [password, setPassword] = useState("");
   const [allChamps, setAllChamps] = useState(true);
 
-  const handleSignIn = async () => {
+  const handleLogIn = async () => {
     if (email && password) {
       try {
         const response = await axios.post(
-          "https://express-airbnb-api.herokuapp.com/user/log_in",
+          "https://airbnb-backend-by-ejego.herokuapp.com/user/login",
           {
             email,
             password,
@@ -87,7 +87,7 @@ const LogInScreen = ({ setToken, setId }) => {
                   <Text style={{ display: "none" }}></Text>
                 )}
                 <View style={styles.button}>
-                  <TouchableOpacity onPress={handleSignIn}>
+                  <TouchableOpacity onPress={handleLogIn}>
                     <Text>Log In</Text>
                   </TouchableOpacity>
                 </View>
@@ -109,7 +109,7 @@ const LogInScreen = ({ setToken, setId }) => {
   );
 };
 
-export default SignInScreen;
+export default LogInScreen;
 
 const styles = StyleSheet.create({
   container: {
